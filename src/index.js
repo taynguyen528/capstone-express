@@ -1,19 +1,19 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const cors = require("cors");
+import express from "express";
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import cors from "cors";
+import rootRouter from "./routes/rootRouter.js";
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+// router
+app.use(rootRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
