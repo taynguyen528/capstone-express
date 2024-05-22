@@ -4,7 +4,7 @@
     "description": "Capstone-express",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon src/index.js"
+        "start": "node --watch --env-file=.env src/index.js"
     },
     "type": "module",
     "license": "MIT",
