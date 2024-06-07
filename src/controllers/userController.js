@@ -100,49 +100,64 @@ const getUserCreatedImages = async (req, res) => {
 };
 
 const createImage = async (req, res) => {
-    const { id } = req.params;
-    const { ten_hinh, duong_dan, mo_ta } = req.body;
+  const { id } = req.params;
+  const { ten_hinh, mo_ta } = req.body;
+  
+  // Kiểm tra thông tin đầu vào
+  if (!id || !ten_hinh || !mo_ta || !req.file) {
+    return response(res, null, "Vui lòng cung cấp đầy đủ thông tin", 400);
+  }
 
-    if (!id || !ten_hinh || !duong_dan) {
-        return response(res, null, "Vui lòng cung cấp đầy đủ thông tin ảnh và id người dùng", 400);
-    }
+  try {
+    // Lấy đường dẫn file đã tải lên
+    const duong_dan = req.file.path;
+    
+    // Tạo bản ghi hình ảnh trong cơ sở dữ liệu
+    const createdImage = await prisma.hinh_anh.create({
+      data: {
+        nguoi_dung_id: parseInt(id, 10),
+        ten_hinh: ten_hinh,
+        mo_ta: mo_ta,
+        duong_dan: duong_dan
+      },
+    });
 
-    try {
-        const newImage = await prisma.hinh_anh.create({
-            data: {
-                nguoi_dung_id: parseInt(id, 10),
-                ten_hinh,
-                duong_dan,
-                mo_ta,
-            },
-        });
-
-        return response(res, newImage, "Tạo ảnh mới thành công", 201);
-    } catch (error) {
-        console.error("Lỗi khi tạo ảnh mới:", error);
-        return response(res, null, "Lỗi server", 500);
-    }
+    return response(res, createdImage, "Tạo hình ảnh thành công", 201);
+  } catch (error) {
+    console.error("Lỗi khi tạo hình ảnh:", error);
+    return response(res, null, "Lỗi server", 500);
+  }
 };
 
 const updateUser = async (req, res) => {
-    const { id } = req.params;
-    const updates = req.body;
+  const { id } = req.params;
+  const updates = req.body;
 
-    if (!id || !updates || Object.keys(updates).length === 0) {
-        return response(res, null, "Vui lòng cung cấp đầy đủ thông tin cần cập nhật và id người dùng", 400);
-    }
+  if (!id || !updates || Object.keys(updates).length === 0) {
+    return response(
+      res,
+      null,
+      "Vui lòng cung cấp đầy đủ thông tin cần cập nhật và id người dùng",
+      400
+    );
+  }
 
-    try {
-        const updatedUser = await prisma.nguoi_dung.update({
-            where: { nguoi_dung_id: parseInt(id, 10) },
-            data: updates,
-        });
+  try {
+    const updatedUser = await prisma.nguoi_dung.update({
+      where: { nguoi_dung_id: parseInt(id, 10) },
+      data: updates,
+    });
 
-        return response(res, updatedUser, "Cập nhật thông tin cá nhân thành công", 200);
-    } catch (error) {
-        console.error("Lỗi khi cập nhật thông tin cá nhân:", error);
-        return response(res, null, "Lỗi server", 500);
-    }
+    return response(
+      res,
+      updatedUser,
+      "Cập nhật thông tin cá nhân thành công",
+      200
+    );
+  } catch (error) {
+    console.error("Lỗi khi cập nhật thông tin cá nhân:", error);
+    return response(res, null, "Lỗi server", 500);
+  }
 };
 
 export {
@@ -150,5 +165,5 @@ export {
   getUserSavedImages,
   getUserCreatedImages,
   createImage,
-  updateUser
+  updateUser,
 };
