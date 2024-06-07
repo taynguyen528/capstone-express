@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "b1478a99-5785-41b3-aaef-b92a2ff822cb",
+		"name": "Capstone-express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29512310"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "API SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "testUpdate@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "matKhau",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "hoTen",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "tuoi",
+									"value": "19",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8080/auth/sign-up"
+					},
+					"response": []
+				},
+				{
+					"name": "API Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "testUpdate@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "matKhau",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8080/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20ifSwiaWF0IjoxNzE2MTkyMDAwLCJleHAiOjE3MTYxOTIwMTV9.ZgNiy9xfzdbiL2PNX-TiHEHsQnWSKWX7dvMqXiDXCng"
+							}
+						],
+						"url": "http://localhost:8080/auth/test"
+					},
+					"response": []
+				},
+				{
+					"name": "API Reset Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20ifSwiaWF0IjoxNzE2MTkxOTcxLCJleHAiOjE3MTYxOTE5ODZ9.JTkFh0ojhmwx07-lQr-Uk27c3Vl4y2BUHVmTbqbxu7U"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "http://localhost:8080/auth/reset-token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update Info User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzM1MTMzLCJleHAiOjE3MTg1OTkxMzN9.Uh5OYY7vOPJxxhIFmSqdksiFe8NYnHtRH3e2O1VLBtI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"update@gmail.com\",\r\n  \"mat_khau\": \"123456\",\r\n  \"ho_ten\": \"Nguyen\",\r\n  \"tuoi\": 22\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user/update-user/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Info User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzM1MTMzLCJleHAiOjE3MTg1OTkxMzN9.Uh5OYY7vOPJxxhIFmSqdksiFe8NYnHtRH3e2O1VLBtI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/user/get-user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"get-user",
+								"1"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzM1MTMzLCJleHAiOjE3MTg1OTkxMzN9.Uh5OYY7vOPJxxhIFmSqdksiFe8NYnHtRH3e2O1VLBtI",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ten_hinh",
+									"value": "nguyen",
+									"type": "text"
+								},
+								{
+									"key": "mo_ta",
+									"value": "mo ta 2",
+									"type": "text"
+								},
+								{
+									"key": "duong_dan",
+									"type": "file",
+									"src": "/C:/Users/ADMIN/Downloads/hook.jpg"
+								}
+							]
+						},
+						"url": "http://localhost:8080/user/create-image/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Create Image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": "http://localhost:8080/user/get-user-create-img/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Save Image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/user/get-user-save-img/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"get-user-save-img",
+								"2"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Image",
+			"item": [
+				{
+					"name": "Get List Image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": "http://localhost:8080/image/getListImage"
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Name Image",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ten_hinh",
+									"value": "test 2",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8080/image/searchImage"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Image With Creator",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": "http://localhost:8080/image/images/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "imageId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "comment 12",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8080/image/createComment"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comment By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": "http://localhost:8080/image/getCommentId/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Image Save",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": "http://localhost:8080/image/checkImageSaved/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Comment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": "http://localhost:8080/image/getListComment"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Image By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjIsImVtYWlsIjoidGVzdFVwZGF0ZUBnbWFpbC5jb20ifSwiaWF0IjoxNzE3NzgzNTE2LCJleHAiOjE3MTg2NDc1MTZ9.GuWJ4dHcq0t0jnrNBSrMRTQCpFtK6Wj1icqEbiAcoeY"
+							}
+						],
+						"url": "http://localhost:8080/image/deleteImageId/5"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
