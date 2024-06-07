@@ -5,6 +5,7 @@ import {
     getUserCreatedImages,
     getUserSavedImages,
     updateUser,
+    deleteImage
 } from "../controllers/userController.js";
 import { verifyToken } from "../config/jwt.js";
 import { upload } from "../config/upload.js";
@@ -15,6 +16,8 @@ userRouter.get('/get-user/:id', verifyToken, getUser)
 userRouter.get('/get-user-save-img/:id', getUserSavedImages)
 userRouter.get('/get-user-create-img/:id', getUserCreatedImages)
 userRouter.post("/create-image/:id", upload.single("duong_dan"), createImage)
+userRouter.delete('/delete-image/:id', deleteImage)
 userRouter.put('/update-user/:id', updateUser)
+
 
 export default userRouter;

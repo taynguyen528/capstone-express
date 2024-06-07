@@ -129,6 +129,36 @@ const createImage = async (req, res) => {
   }
 };
 
+const deleteImage = async (req, res) => {
+  const { id } = req.params; // id này là hinh_id của hình ảnh
+
+  if (!id) {
+    return response(res, null, "Vui lòng cung cấp id hình ảnh", 400);
+  }
+
+  try {
+    
+    const exist = await prisma.hinh_anh.findFirst({
+      where: { hinh_id: parseInt(id, 10) }
+    });
+
+    console.log(exist)
+    if (!exist) {
+      
+      return response(res, null, "Hình ảnh không tồn tại", 400);
+    }
+
+    await prisma.hinh_anh.delete({
+      where: { hinh_id: parseInt(id, 10) }
+    });
+
+    return response(res, null, "Xóa hình ảnh thành công", 200);
+  } catch (error) {
+    console.error("Lỗi khi xóa hình ảnh:", error);
+    return response(res, null, "Lỗi server", 500);
+  }
+};
+
 const updateUser = async (req, res) => {
   const { id } = req.params;
   const updates = req.body;
@@ -165,5 +195,6 @@ export {
   getUserSavedImages,
   getUserCreatedImages,
   createImage,
+  deleteImage,
   updateUser,
 };
